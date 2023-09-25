@@ -7,6 +7,7 @@ Integrate singbox and cloudflare warp.
 
 ## How to start
 ```shell
+docker-compose build
 docker-compose up -d sing-warp
 ```
 
