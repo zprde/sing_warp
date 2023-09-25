@@ -14,6 +14,5 @@ echo "best endpoint: $BEST_IP:$BEST_PORT"
 cat config.tmp.json \
 | sed "s/SERVER_IP/$BEST_IP/g" \
 | sed "s/SERVER_PORT/$BEST_PORT/g" \
-| sed "s/PRIVATE_KEY/$PRIVATE_KEY/g" \
-> config.json
+| sed "s/PRIVATE_KEY/$PRIVATE_KEY/g" > config.json
 chmod 666 config.json
