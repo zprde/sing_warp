@@ -13,6 +13,6 @@ echo "best endpoint: $BEST_IP:$BEST_PORT"
 
 cat config.tmp.json \
 | jq ".outbounds[0].server = \"$BEST_IP\"" \
-| jq ".outbounds[0].server_port = \"$BEST_PORT\"" \
+| jq ".outbounds[0].server_port = $BEST_PORT" \
 | jq ".outbounds[0].private_key = \"$PRIVATE_KEY\""  > config.json
 chmod 666 config.json
