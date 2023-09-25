@@ -11,6 +11,11 @@ docker-compose build
 docker-compose up -d sing-warp
 ```
 
+## How to restart existed service
+```shell
+docker restart sing_warp-sing-warp-1
+```
+
 Then the `0.0.0.0:2080` can be a http/https/sock5 proxy port.
 
 ## How to uninstall it
