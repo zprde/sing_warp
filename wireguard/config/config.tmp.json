@@ -34,9 +34,9 @@
         "172.16.0.2/32",
         "2606:4700:110:8ec4:619:4b3b:999c:6744/128"
       ],
-      "server": "SERVER_IP",
-      "server_port": SERVER_PORT,
-      "private_key": "PRIVATE_KEY",
+      "server": "test_server",
+      "server_port": -1,
+      "private_key": "test_key",
       "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
       "reserved": [
         0,
