@@ -1,0 +1,47 @@
+services:
+  register-warp:
+    image: virb3/wgcf
+    volumes:
+      - ${PWD}/wireguard/config/config.toml:/wgcf-account.toml
+    command:
+      - register
+      - --accept-tos
+  image-build:
+    image: warp-ip
+    build:
+      context: wireguard/
+    entrypoint: "echo 'build success'"
+    depends_on:
+      register-warp:
+        condition: service_completed_successfully
+  warp-ip:
+    image: warp-ip
+    volumes:
+      - ${PWD}/wireguard/config:/wireguard
+    working_dir: /wireguard
+    entrypoint: "bash endip.sh "
+    depends_on:
+      - image-build
+  expose-best:
+    image: warp-ip
+    volumes:
+      - ${PWD}/wireguard/config:/wireguard
+    working_dir: /wireguard
+    entrypoint: "bash best.sh"
+    depends_on:
+      warp-ip:
+        condition: service_completed_successfully
+  sing-warp:
+    image: ghcr.io/sagernet/sing-box:v1.4.3
+    restart: always
+    volumes:
+      - ${PWD}/wireguard/config/config.json:/config.json
+    command:
+      - run
+      - -c
+      - /config.json
+    ports:
+      - 2080:1080
+    depends_on:
+      expose-best:
+        condition: service_completed_successfully

@@ -1,0 +1,70 @@
+{
+  "log": {
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "cf-dns",
+        "address": "tcp://1.1.1.1",
+        "detour": "wireguard-out"
+      }
+    ],
+    "rules": [
+      {
+        "inbound": "sing-1",
+        "server": "cf-dns"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "type": "mixed",
+      "listen": "::",
+      "listen_port": 1080,
+      "tag": "sing-1"
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "wireguard",
+      "tag": "wireguard-out",
+      "system_interface": false,
+      "interface_name": "wg0",
+      "local_address": [
+        "172.16.0.2/32",
+        "2606:4700:110:8ec4:619:4b3b:999c:6744/128"
+      ],
+      "server": "SERVER_IP",
+      "server_port": SERVER_PORT,
+      "private_key": "PRIVATE_KEY",
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "reserved": [
+        0,
+        0,
+        0
+      ],
+      "workers": 8,
+      "mtu": 1280
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "type": "direct",
+      "tag": "direct-out"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      },
+      {
+        "inbound": "sing-1",
+        "outbound": "wireguard-out"
+      }
+    ]
+  }
+}
