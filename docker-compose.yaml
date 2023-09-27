@@ -31,6 +31,13 @@ services:
     depends_on:
       warp-ip:
         condition: service_completed_successfully
+  autoheal:
+    restart: always
+    image: willfarrell/autoheal
+    environment:
+      - AUTOHEAL_CONTAINER_LABEL=all
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
   sing-warp:
     image: ghcr.io/sagernet/sing-box:v1.4.3
     restart: always
@@ -47,8 +54,10 @@ services:
       test: "sh /health_check.sh"
       start_period: 10s
       retries: 5
-      interval: 10s
+      interval: 5s
       timeout: 10s
     depends_on:
       expose-best:
         condition: service_completed_successfully
+      autoheal:
+        condition: service_started
