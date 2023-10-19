@@ -1,0 +1,3 @@
+[submodule "wgcf"]
+	path = wgcf
+	url = git@github.com:ViRb3/wgcf.git
