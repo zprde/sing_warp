@@ -1,3 +1,6 @@
 [submodule "wgcf"]
 	path = wgcf
 	url = git@github.com:ViRb3/wgcf.git
+[submodule "sing-box"]
+	path = sing-box
+	url = git@github.com:SagerNet/sing-box.git
