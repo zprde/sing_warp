@@ -42,7 +42,7 @@ services:
     restart: always
     volumes:
       - ${PWD}/wireguard/config/config.json:/config.json
-      - ${PWD}/sing-box/health_check.sh:/health_check.sh
+      - ${PWD}/health_check.sh:/health_check.sh
     command:
       - run
       - -c
