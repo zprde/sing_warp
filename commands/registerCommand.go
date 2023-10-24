@@ -1,7 +1,9 @@
 package commands
 
 import (
+	"github.com/ViRb3/wgcf/config"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 	"log"
 	"os"
 	"os/exec"
@@ -12,7 +14,9 @@ var RegisterCommand = &cobra.Command{
 	Short: "reg",
 	Long:  "register a new account",
 	Run: func(command *cobra.Command, args []string) {
-		if file, _ := os.Open("./wgcf-account.toml"); file != nil {
+		if viper.GetString(config.PrivateKey) == "" {
+			log.Println("Empty config, will register a new one.")
+		} else {
 			log.Println("Config already exists, skip the register.")
 			return
 		}
