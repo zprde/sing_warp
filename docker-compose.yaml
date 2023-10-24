@@ -1,11 +1,10 @@
 services:
   register-warp:
-    image: virb3/wgcf
+    image: sing_warp
     volumes:
       - ${PWD}/wireguard/config/config.toml:/wgcf-account.toml
     command:
       - register
-      - --accept-tos
   image-build:
     image: warp-ip
     build:
