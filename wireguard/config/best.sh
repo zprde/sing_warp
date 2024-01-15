@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-PRIVATE_KEY=$(cat config.toml | grep private_key | sed "s/^.*'\(.*\)'$/\1/g")
+PRIVATE_KEY=$(cat wgcf-account.toml | grep private_key | sed "s/^.*'\(.*\)'$/\1/g")
 echo "private_key: $PRIVATE_KEY"
 
 BEST=$(cat result.csv | head -2 | tail -1 | sed -E 's/^(.*?),.*%.*$/\1/g')
