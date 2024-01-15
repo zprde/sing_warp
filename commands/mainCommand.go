@@ -4,6 +4,7 @@ import (
 	"github.com/ViRb3/wgcf/cmd"
 	"github.com/ViRb3/wgcf/cmd/shared"
 	"github.com/ViRb3/wgcf/util"
+	sing_box "github.com/sagernet/sing-box/cmd/sing-box"
 	"github.com/spf13/cobra"
 	"log"
 )
@@ -21,6 +22,8 @@ long message`),
 }
 
 func init() {
+
 	MainCmd.AddCommand(cmd.RootCmd)
+	MainCmd.AddCommand(sing_box.SingBoxCommand)
 	MainCmd.AddCommand(RegisterCommand)
 }
