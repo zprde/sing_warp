@@ -20,7 +20,7 @@ Then the `0.0.0.0:2080` can be a http/https/sock5 proxy port.
 
 ## How to uninstall it
 ```shell
-docker-compose down --rmi all
+docker-compose down --volumes --rmi all
 ```
 
 Reference Repos:
