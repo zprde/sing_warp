@@ -1,6 +1,8 @@
 services:
   register-warp:
     image: sing_warp
+    build:
+      context: .
     volumes:
       - ${PWD}/wireguard/config/config.toml:/wgcf-account.toml
     command:
