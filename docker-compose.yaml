@@ -51,12 +51,13 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   sing-warp:
-    image: ghcr.io/sagernet/sing-box:v1.4.3
+    image: sing_warp
     restart: always
     volumes:
       - warp_data:/data
       - ${PWD}/health_check.sh:/health_check.sh
     command:
+      - sing-box
       - run
       - -c
       - /data/config.json
