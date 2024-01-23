@@ -1,6 +1,8 @@
 [submodule "wgcf"]
 	path = wgcf
 	url = git@github.com:ViRb3/wgcf.git
+	branch = master
 [submodule "sing-box"]
 	path = sing-box
-	url = git@github.com:SagerNet/sing-box.git
+	url = git@github.com:zprde/sing-box.git
+	branch = dev-next
